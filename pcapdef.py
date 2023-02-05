@@ -1,6 +1,11 @@
-# PcapDefender
-### User preview release
-```
+from reader import Reader
+from output import Output
+import sys
+from colorama import Fore, Back
+
+
+logo = ''' 
+
                                 _       __               _              
                                | |     / _|             | |             
     _ __   ___ __ _ _ __     __| | ___| |_ ___ _ __   __| | ___ _ __    
@@ -14,31 +19,20 @@
  | |_) | |_| | | | | | | | (_| | (__  | | (_| |\ V  V /\__ | (_) | | | |
  |_.__/ \__, | |_| |_| |_|\__,_|\___| |_|\__,_| \_/\_/ |___/\___/|_| |_|
          __/ |                                                          
-        |___/  
+        |___/                                                                                                                  
+ '''
+def handel():
+        # try:
+            if(len(sys.argv) > 1):
+                if((sys.argv[1] == "-s" and sys.argv[3] == "-f")):
 
-```
-
-## About
-PcapDefender is a python tool for searching .pcap files for strings. 
-
-## Install
-Clone the repo:
-```
-git clone https://github.com/mac-lawson/PcapDefender.git
-```
-
-Install deps:
-```
-python3 -m pip install colorama
-python3 -m pip install scapy
-```
-
-## Usage
-Example usage using the demo.pcap file and searching for the string 'Windows NT':
-```
-python3 pcapdef.py -s "Windows NT" -f demo.pcap 
-``` 
+                    Reader.filterData((sys.argv[2]), (sys.argv[4]))
 
 
-## Release notes
-- 
+        # except:
+        #     Output.error("No parameters were provided. If they were, they were not correct. Refer to the 'Usage' guide.")
+
+print(logo)
+Output.usage()
+handel()
+
